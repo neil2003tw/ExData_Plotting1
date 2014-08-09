@@ -1,0 +1,6 @@
+all_date<-read.csv('household_power_consumption.txt',sep=';')
+specify_date<-tail(head(all_date,69516),2880)
+Global_active_power<-as.numeric(as.character(specify_date$Global_active_power))
+date_time<-paste(specify_date$Date,specify_date$Time)
+date_time<-strptime(date_time,'%d/%m/%Y %H:%M:%S')
+plot(date_time,Global_active_power,type='l',ylab='Global Active Power(kilowatts)')
